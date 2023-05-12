@@ -54,10 +54,7 @@
   },
   "pairlists": [
         {
-            "method": "VolumePairList",
-            "number_assets": 90,
-            "sort_key": "quoteVolume",
-            "refresh_period": 3600
+            "method": "StaticPairList"
         },
         {
             "method": "ShuffleFilter"

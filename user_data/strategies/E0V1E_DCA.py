@@ -12,7 +12,7 @@ class E0V1E_DCA (E0V1E):
 
     position_adjustment_enable = True
     initial_safety_order_trigger = -0.02
-    max_entry_position_adjustment = 3
+    max_entry_position_adjustment = 1
     safety_order_step_scale = 2
     safety_order_volume_scale = 1.8
     
