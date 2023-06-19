@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+import logging
 from typing import Optional, Union
 import freqtrade.vendor.qtpylib.indicators as qtpylib
 import talib.abstract as ta
@@ -9,6 +10,7 @@ from pandas import DataFrame
 from freqtrade.strategy import DecimalParameter, IntParameter
 from functools import reduce
 
+logger = logging.getLogger(__name__)
 
 def ewo(dataframe, ema_length=5, ema2_length=35):
     df = dataframe.copy()
@@ -175,6 +177,7 @@ class E0V1E(IStrategy):
                 and (current_candle['close'] > current_candle['bb_middleband2'] * self.sell_deadfish_bb_factor.value)
                 and (current_candle['volume_mean_12'] < current_candle[
                     'volume_mean_24'] * self.sell_deadfish_volume_factor.value)):
+            logger.info(f"{pair} sell_stoploss_deadfish at {current_profit*100}")
             return "sell_stoploss_deadfish"
 
     def populate_exit_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
